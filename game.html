@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHAIN REACTION</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/game.css">
+    
+</head>
+<body>
+    
+
+    
+    <div class="container">
+    <header class="d-flex flex-wrap justify-content-between py-2 mb-2 border-bottom border-white">
+        <span class="fs-4 fw-bold text-white">CHAIN RXN.</span>
+        <div class="d-flex gap-2">
+        <button type="button" id = "gamestart" class="btn btn-primary">START GAME</button>
+        <button type="button" id = "reset" class = "btn btn-primary hide">RESET</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">RULES</button>
+        </div>
+    </div>
+
+    <div class="px-2 py-2 my-2 d-flex flex-column flex-md-row gap-10 align-items-start justify-content-center gamearea">
+        <div id="grid" class = "grid"></div>
+    
+        <div class="d-flex flex-column gap-3 w-100" style="max-width: 300px;">
+            
+            <div class="card shadow-sm boxes border-secondary">
+                <div class="card-header bg-dark fw-bold text-center text-uppercase text-white small">Game Info</div>
+                <div class="card-body text-center py-2">
+                    <div id="result" class="fw-bold mb-1"></div>
+                    <div class="text-secondary small fw-bold">GAME TIME</div>
+                    <div id="gametime" class="fs-4">-:--</div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm border-danger border-start border-2">
+                <div class="card-body boxes py-2">
+                    <h6 class="card-title text-danger text-center mb-2 small fw-bold">RED</h6>
+                    <div class="row g-0 text-center">
+                        <div class="col-6 border-end">
+                            <div class=" small fw-bold">TIME</div>
+                            <div id="time_0">-:--</div>
+                        </div>
+                        <div class="col-6">
+                            <div class=" small fw-bold">POINTS</div>
+                            <div id="pts_0" class="fs-5">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm border-primary border-start border-2">
+                <div class="card-body boxes py-2">
+                    <h6 class="card-title text-primary mb-2 small text-center fw-bold">BLUE</h6>
+                    <div class="row g-0 text-center">
+                        <div class="col-6 border-end">
+                            <div class="small fw-bold">TIME</div>
+                            <div id="time_1">-:--</div>
+                        </div>
+                        <div class="col-6">
+                            <div class="small fw-bold">POINTS</div>
+                            <div id="pts_1" class="fs-5">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    
+
+    <!-- Rules -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable ">
+        <div class="modal-content boxes">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">GAME RULES</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <ul>
+        <li><p>
+            CHAIN RXN. is a turn-based strategy game played on a grid, where players compete to dominate the board using explosive chain reactions.
+        </p></li>
+        <li><p>
+            Each cell on the board has a capacity determined by the number of orthogonally adjacent neighbours it has. Corner cells have a capacity of 2, edge cells have a capacity of 3, and inner cells have a capacity of 4. A cell can safely hold up to one less than its capacity; once the capacity is reached, the cell explodes.
+        </p></li>
+        <li><p>
+            At the start of the game, players may place elements only on empty cells. The players will place "one-less than capacity" number of elements in a cell and gain control. After gaining control of a cell, a player may place additional elements only on cells they already own. Every placement increases the number of elements in that cell by one.
+        </p></li>
+        <li><p>
+            When a cell reaches its capacity, an explosion is triggered. The exploding cell becomes empty and distributes one element to each orthogonally adjacent cell (up, down, left, and right). These neighbouring cells may themselves reach capacity and explode, creating powerful chain reactions across the board. Any cell affected by an explosion immediately changes ownership to the player who caused the explosion, allowing players to capture enemy territory and rapidly shift control of the board through strategic reactions.
+        </p></li>
+        <li><p>
+            The game is played in turns, with each player required to make their move within a limited turn timer. In addition, the entire match is governed by a global game timer to maintain fast-paced gameplay and constant pressure.
+        </p></li> 
+        <li><p>
+            Players earn points based on the number of elements with them and the number of chain reactions triggered during the game.
+        </p></li> 
+        <li><p>
+            The match ends when only one player's elements remain on the board, or when the game timer or player timer ends. In the event of a game timeout, the player with the higher points is declared the winner.
+        </p></li> 
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+    </div>
+    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="./scripts/game.js"></script>
+</body>
+</html>

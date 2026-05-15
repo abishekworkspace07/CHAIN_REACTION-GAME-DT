@@ -1,0 +1,61 @@
+body{
+    background-color: #340E57;
+}
+
+#grid{
+    background-color: black;
+    padding:5px;
+    margin:0;
+    display: inline-grid;
+    gap: 1px;
+
+    justify-content: center;
+    align-content: center;
+}
+
+.line{
+    display : grid;
+    grid-template-columns: repeat(6, 50px);
+    gap: 1px;
+}
+
+.cell{
+
+    width: 50px;
+    height: 45px;
+
+    background-color: grey;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 1px 1px 0 0;
+}
+
+.gamearea{
+    display: flex;
+    flex-direction: row;     /* Places children side-by-side */
+    justify-content: center; /* Centers both blocks together on the screen */
+    align-items: center;     /* Aligns them vertically along their centers */
+    gap: 100px;               /* Adds a clean gap between the grid and the panel */
+}
+
+.cell img{
+    width : 40px;
+}
+
+.cell:hover{
+    background : darkgrey
+}
+
+.hide{
+    display: none;
+}
+
+.boxes{
+    background-color: #d7c9f0;
+}
