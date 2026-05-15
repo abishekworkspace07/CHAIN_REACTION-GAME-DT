@@ -266,7 +266,7 @@ function explode(r,c){
 
 function checkavail(){
     if(move >= 2){
-        for(const i in spots){
+        for(const i in players){
         
             if(players[i].spots===0){
                 finishgame(2,i)
