@@ -15,7 +15,6 @@ body{
 
 .line{
     display : grid;
-    grid-template-columns: repeat(6, 50px);
     gap: 1px;
 }
 

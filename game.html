@@ -11,14 +11,45 @@
 </head>
 <body>
     
+    <div class="modal fade" id="playerselect" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content boxes">
+        <div class="modal-header border-bottom border-black">
+            <div class="modal-title fs-5 fw-bold text-center" id="staticBackdropLabel">SELECT NUMBER OF PLAYERS</div>
+            
+        </div>
+        <div id = "selectmode" class="modal-body text-center">
+            <button type="button" id="2" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#gridselect">2 PLAYERS</button>
+            <button type="button" id="3" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#gridselect">3 PLAYERS</button>
+            <button type="button" id="4" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#gridselect">4 PLAYERS</button>
+        </div>
+        </div>
+    </div>
+    </div>
 
+    <div class="modal fade" id="gridselect" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content boxes">
+        <div class="modal-header border-bottom border-black">
+            <div class="modal-title fs-5 fw-bold text-center" id="staticBackdropLabel">SELECT GRID</div>
+            
+        </div>
+        <div id = "selectgrid" class="modal-body text-center">
+            <p id="gridselectinfo">Enter Rows and Columns for Grid (min : 4x4, max : 12x12)</p>
+            <label for="rows">ROWS (default 12):</label><input type="number" id="rows" min="4" max="12" step="1" value="12"><br>
+            <label for="cols">COLUMNS (default 6):</label><input type="number" id="cols" min="4" max="12" step="1" value="6"><br><br>
+            <button id="griddetails" data-bs-dismiss="modal" aria-label="Close" type="button" class="btn btn-primary">Submit</button>
+        </div>
+        </div>
+    </div>
+    </div>
     
     <div class="container">
     <header class="d-flex flex-wrap justify-content-between py-2 mb-2 border-bottom border-white">
         <span class="fs-4 fw-bold text-white">CHAIN RXN.</span>
         <div class="d-flex gap-2">
         <button type="button" id = "gamestart" class="btn btn-primary">START GAME</button>
-        <button type="button" id = "reset" class = "btn btn-primary hide">RESET</button>
+        <button type="button" id = "reset" class = "btn btn-primary hide" data-bs-toggle="modal" data-bs-target="#playerselect">RESET</button>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">RULES</button>
         </div>
     </div>
@@ -29,7 +60,7 @@
         <div class="d-flex flex-column gap-3 w-100" style="max-width: 300px;">
             
             <div class="card shadow-sm boxes border-secondary">
-                <div class="card-header bg-dark fw-bold text-center text-uppercase text-white small">Game Info</div>
+                <div class="card-header bg-dark fw-bold text-center text-uppercase text-white small">GAME INFO</div>
                 <div class="card-body text-center py-2">
                     <div id="result" class="fw-bold mb-1"></div>
                     <div class="text-secondary small fw-bold">GAME TIME</div>
@@ -37,9 +68,9 @@
                 </div>
             </div>
 
-            <div class="card shadow-sm border-danger border-start border-2">
+            <div id="info_0" class="card shadow-sm border-danger border-start border-3">
+                <div class="card-header bg-dark text-danger text-center small fw-bold">PLAYER RED</div>
                 <div class="card-body boxes py-2">
-                    <h6 class="card-title text-danger text-center mb-2 small fw-bold">RED</h6>
                     <div class="row g-0 text-center">
                         <div class="col-6 border-end">
                             <div class=" small fw-bold">TIME</div>
@@ -53,9 +84,9 @@
                 </div>
             </div>
 
-            <div class="card shadow-sm border-primary border-start border-2">
+            <div id="info_1" class="card shadow-sm border-primary border-start border-3">
+                <div class="card-header bg-dark text-primary text-center small fw-bold">PLAYER BLUE</div>
                 <div class="card-body boxes py-2">
-                    <h6 class="card-title text-primary mb-2 small text-center fw-bold">BLUE</h6>
                     <div class="row g-0 text-center">
                         <div class="col-6 border-end">
                             <div class="small fw-bold">TIME</div>
@@ -64,6 +95,38 @@
                         <div class="col-6">
                             <div class="small fw-bold">POINTS</div>
                             <div id="pts_1" class="fs-5">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="info_2" class="card shadow-sm border-success border-start border-3">
+                <div class="card-header bg-dark text-success text-center small fw-bold">PLAYER GREEN</div>
+                <div class="card-body boxes py-2">
+                    <div class="row g-0 text-center">
+                        <div class="col-6 border-end">
+                            <div class=" small fw-bold">TIME</div>
+                            <div id="time_2">-:--</div>
+                        </div>
+                        <div class="col-6">
+                            <div class=" small fw-bold">POINTS</div>
+                            <div id="pts_2" class="fs-5">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="info_3" class="card shadow-sm border-warning border-start border-3">
+                <div class="card-header bg-dark text-warning text-center small fw-bold">PLAYER YELLOW</div>
+                <div class="card-body boxes py-2">
+                    <div class="row g-0 text-center">
+                        <div class="col-6 border-end">
+                            <div class=" small fw-bold">TIME</div>
+                            <div id="time_3">-:--</div>
+                        </div>
+                        <div class="col-6">
+                            <div class=" small fw-bold">POINTS</div>
+                            <div id="pts_3" class="fs-5">0</div>
                         </div>
                     </div>
                 </div>
@@ -86,25 +149,34 @@
         <div class="modal-body">
         <ul>
         <li><p>
-            CHAIN RXN. is a turn-based strategy game played on a grid, where players compete to dominate the board using explosive chain reactions.
+            <b>CHAIN RXN.</b> is a turn-based strategy game played on a grid, where players compete to dominate the board using explosive chain reactions.
         </p></li>
         <li><p>
-            Each cell on the board has a capacity determined by the number of orthogonally adjacent neighbours it has. Corner cells have a capacity of 2, edge cells have a capacity of 3, and inner cells have a capacity of 4. A cell can safely hold up to one less than its capacity; once the capacity is reached, the cell explodes.
+            <strong>Game Setup : </strong>
+            The number of players and grid/board size has already been chosen. Each cell on the board has a capacity determined by the number of orthogonally adjacent neighbours it has. Corner cells have a capacity of 2, edge cells have a capacity of 3, and inner cells have a capacity of 4. A cell can safely hold up to one less than its capacity; once the capacity is reached, the cell explodes.
         </p></li>
         <li><p>
+            <strong>Placement : </strong>
             At the start of the game, players may place elements only on empty cells. The players will place "one-less than capacity" number of elements in a cell and gain control. After gaining control of a cell, a player may place additional elements only on cells they already own. Every placement increases the number of elements in that cell by one.
         </p></li>
         <li><p>
+            <strong>Explode on Cap : </strong>
             When a cell reaches its capacity, an explosion is triggered. The exploding cell becomes empty and distributes one element to each orthogonally adjacent cell (up, down, left, and right). These neighbouring cells may themselves reach capacity and explode, creating powerful chain reactions across the board. Any cell affected by an explosion immediately changes ownership to the player who caused the explosion, allowing players to capture enemy territory and rapidly shift control of the board through strategic reactions.
         </p></li>
         <li><p>
-            The game is played in turns, with each player required to make their move within a limited turn timer. In addition, the entire match is governed by a global game timer to maintain fast-paced gameplay and constant pressure.
+            The game is played in turns, with each player required to make their move within a limited turn timer. In addition, the entire match is governed by a global game timer to maintain fast-paced gameplay and constant pressure. 
         </p></li> 
         <li><p>
-            Players earn points based on the number of elements with them and the number of chain reactions triggered during the game.
+            <strong>Points : </strong>
+            Players earn points based on the number of elements with them and the number of chain reactions triggered during the game. If a player's timer ends or they have no more elements, they are eliminated from the game. In case of player timeout, the player's elements are preserved for other players to capture
         </p></li> 
         <li><p>
-            The match ends when only one player's elements remain on the board, or when the game timer or player timer ends. In the event of a game timeout, the player with the higher points is declared the winner.
+            <strong>Elimination : </strong>
+            If a player's timer ends or they have no more elements, they are eliminated from the game.
+        </p></li> 
+        <li><p>
+            <strong>End : </strong>
+            The match ends when only one player's elements remain on the board, or when the game timer ends. In the event of a game timeout, the player with the higher points is declared the winner.
         </p></li> 
 
         </div>
