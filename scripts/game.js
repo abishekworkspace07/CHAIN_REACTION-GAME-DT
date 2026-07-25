@@ -307,14 +307,6 @@ function explode(r,c){
 }
 
 function checkavail(){
-<<<<<<< HEAD
-    if(move >= 2){
-        for(const i in players){
-        
-            if(players[i].spots===0){
-                finishgame(2,i)
-                return false
-=======
     if(move >= totplayers){
         console.log("active now",active.join(','))
         for(const i of active){
@@ -322,7 +314,6 @@ function checkavail(){
                 if(eliminateplayer(Number(i),1)){
                     return false
                 }
->>>>>>> 00f3e47 (Implemented multiplayer and dynamic grid)
             }
         }
     }
